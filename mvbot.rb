@@ -14,8 +14,13 @@ bot = Discordrb::Commands::CommandBot.new(
 )
 puts "This bot's invite URL is #{bot.invite_url}."
 in_progress ||= false
+engaged ||= false
 players = []
 timers = Timers::Group.new
+line = 0
+$key = []
+key_file = "key.txt"
+IO.foreach(key_file){|line| $key.push(line.strip)}
 
 bot.command :guess do |event|
   if !in_progress
@@ -69,14 +74,43 @@ bot.command :end do |event|
 end
 
 bot.command :next do |event|
-  randVal = rand(NUM_IMAGES).to_s
-  event.respond("Ok! Guess the MV!")
-  f = File.new("pics/"+randVal+".png", "r")
-  event.channel.send_file(f)
+  if in_progress
+    randVal = rand(NUM_IMAGES)
+    f = File.new("pics/"+randVal.to_s+".png", "r")
+    event.respond("Ok! Guess the MV!")
+    event.channel.send_file(f)
+    line = $key[randVal-1].strip
+    engaged = true
+    set_pic(randVal, event)
+  else
+    event.respond("There is no game in progress right now!")
+  end
 end
 
-def set_pic(num)
-  
+def set_pic(num, event)
+  event.send_message($key[num-1])
+end
+
+bot.message do |event|
+  if in_progress && engaged
+    loc = players.find_index{|player| player.match(event.user.id)}
+    if loc != nil
+      key_words = line.split(/\W+/)
+      key_words.shift
+      #artist = key_words.shift
+      #title = key_words.join(" ").to_s
+      
+      guess = event.message.text.strip
+      answer_reg = /\b#{Regexp.quote(key_words.join(' '))}\b/
+      #guess_reg = /#{Regexp.quote(guess)}/
+      #event.respond(guess.join(" "))
+      if answer_reg.match(guess)
+        event.respond("#{event.user.username} gets a point!")
+        players[loc].give_point
+        engaged = false
+      end
+    end
+  end
 end
 
 
