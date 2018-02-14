@@ -18,9 +18,22 @@ engaged ||= false
 players = []
 timers = Timers::Group.new
 line = 0
-$key = []
+key = []
 key_file = "key.txt"
-IO.foreach(key_file){|line| $key.push(line.strip)}
+IO.foreach(key_file){|line| key.push(line.strip)}
+
+bot.command :help do |event|
+  str = [
+    "***Commands:***",
+    "-You can start and end a session with **?guess** and **?end**.",
+    "-You can join and quit a game with **?join** and **?quit**.",
+    "-Display the next picture with **?next**.",
+    "\n***Answers:***",
+    "-Answers _must_ be written with artist first, and must contain the whole artist and whole title.",
+    "-They do not, however, need to match case - answering in all uppercase is the same as all lowercase."
+  ]
+  event.respond(str.join("\n"))
+end
 
 bot.command :guess do |event|
   if !in_progress
@@ -79,16 +92,11 @@ bot.command :next do |event|
     f = File.new("pics/"+randVal.to_s+".png", "r")
     event.respond("Ok! Guess the MV!")
     event.channel.send_file(f)
-    line = $key[randVal-1].strip
     engaged = true
-    set_pic(randVal, event)
+    line = key[randVal-1].strip
   else
     event.respond("There is no game in progress right now!")
   end
-end
-
-def set_pic(num, event)
-  event.send_message($key[num-1])
 end
 
 bot.message do |event|
@@ -104,7 +112,7 @@ bot.message do |event|
       answer_reg = /\b#{Regexp.quote(key_words.join(' '))}\b/
       #guess_reg = /#{Regexp.quote(guess)}/
       #event.respond(guess.join(" "))
-      if answer_reg.match(guess)
+      if answer_reg.match(guess.downcase)
         event.respond("#{event.user.username} gets a point!")
         players[loc].give_point
         engaged = false
