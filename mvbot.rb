@@ -48,7 +48,7 @@ bot.command :join do |event|
   if in_progress
     if players.none?{|player| player.match(event.user.id)}
       players.push(Player.new(event.user.username, event.user.id))
-      event.respond("#{event.user.username} joined the game!")
+      event.respond("**#{event.user.username}** joined the game!")
     else
       event.respond("You have already joined!")
     end
@@ -65,7 +65,7 @@ bot.command :quit do |event|
       event.respond("You are not in the game!")
     else
       players.delete_at(loc)
-      event.respond("#{event.user.username} has quit!")
+      event.respond("**#{event.user.username}** has quit!")
     end
   else
     event.respond("There is no game in progress right now!")
@@ -80,7 +80,7 @@ bot.command :end do |event|
     players.sort_by(&:get_score)
     players.each{|player| rankings<<player.rank_to_str()}
     players.clear()
-    event.respond("The game is over. Use !guess to start a new one. Here are the rankings: #{rankings}")
+    event.respond("The game is over. Use ?guess to start a new one. Here are the rankings: #{rankings}")
   else
     event.respond("There is no game in progress right now!")
   end
@@ -90,10 +90,10 @@ bot.command :next do |event|
   if in_progress
     randVal = rand(NUM_IMAGES)
     f = File.new("pics/"+randVal.to_s+".png", "r")
-    event.respond("Ok! Guess the MV!")
-    event.channel.send_file(f)
     engaged = true
     line = key[randVal-1].strip
+    event.respond("Ok! Guess the MV!")
+    event.channel.send_file(f)
   else
     event.respond("There is no game in progress right now!")
   end
@@ -113,7 +113,7 @@ bot.message do |event|
       #guess_reg = /#{Regexp.quote(guess)}/
       #event.respond(guess.join(" "))
       if answer_reg.match(guess.downcase)
-        event.respond("#{event.user.username} gets a point!")
+        event.respond("**#{event.user.username}** gets a point!")
         players[loc].give_point
         engaged = false
       end
