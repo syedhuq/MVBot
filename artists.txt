@@ -1,0 +1,182 @@
+1 aoa
+2 bigbang
+3 bigbang
+4 bigbang
+5 blackpink
+6 blackpink
+7 blackpink
+8 bts
+9 bts
+10 bts
+11 bts
+12 bts
+13 exo
+14 exo
+15 girls generation
+16 ikon
+17 ioi
+18 kard
+19 kard
+20 kard
+21 monsta x
+22 nct 127
+23 nct u
+24 sistar
+25 taemin
+26 taeyeon
+27 twice
+28 2ne1
+29 4minute
+30 ace
+31 ace
+32 aoa
+33 aoa
+34 apink
+35 apink
+36 apink
+37 astro
+38 astro
+39 astro
+40 astro
+41 astro
+42 baek a yeon
+43 baekhyun
+44 bigbang
+45 bigbang
+46 blackpink
+47 block b
+48 boa
+49 boa
+50 brown eyed girls
+51 btob
+52 btob
+53 btob
+54 btob
+55 bts
+56 bts
+57 bts
+58 chungha
+59 clc
+60 davichi
+61 dean
+62 exid
+63 exid
+64 exo
+65 exo
+66 exo
+67 exo
+68 exo
+69 exo
+70 f(x)
+71 gd x taeyang
+72 gfriend
+73 gfriend
+74 gfriend
+75 gfriend
+76 golden child
+77 golden child
+78 good day
+79 got7
+80 got7
+81 got7
+82 got7
+83 got7
+84 got7
+85 got7
+86 got7
+87 got7
+88 gugudan
+89 gugudan
+90 highlight
+91 highlight
+92 holland
+93 huhgak
+94 hyuna
+95 hyuna
+96 hyuna
+97 ioi
+98 ikon
+99 ikon
+100 ikon
+101 jbj
+102 jbj
+103 jeon soyeon
+104 jhope
+105 jhope
+106 knk
+107 knk
+108 knk
+109 lovelyz
+110 mamamoo
+111 mamamoo
+112 mamamoo
+113 mamamoo
+114 momoland
+115 momoland
+116 monsta x
+117 monsta x
+118 monsta x
+119 monsta x
+120 nflying
+121 nct127
+122 nct dream
+123 nct dream
+124 nct dream
+125 nct u
+126 nct u
+127 oguogu
+128 oh my girl
+129 oh my girl
+130 oh my girl
+131 onf
+132 pristin
+133 pristin
+134 red velvet
+135 red velvet
+136 red velvet
+137 red velvet
+138 red velvet
+139 red velvet
+140 red velvet
+141 seven o clock
+142 seventeen
+143 seventeen
+144 seventeen
+145 seventeen
+146 seventeen
+147 seventeen
+148 sf9
+149 sf9
+150 sf9
+151 sf9
+152 sf9
+153 sistar
+154 sistar
+155 sistar
+156 snsd (or girls generation)
+157 snsd (or girls generation)
+158 snsd (or girls generation)
+159 starship planet
+160 stray kids
+161 sunmi
+162 taeyeon
+163 tara
+164 tara
+165 tvxq
+166 twice
+167 twice
+168 twice
+169 twice
+170 twice
+171 vav
+172 wanna one
+173 wanna one
+174 weki meki
+175 weki meki
+176 winner
+177 winner
+178 winner
+179 wjsn (or cosmic girls)
+180 wjsn (or cosmic girls)
+181 wjsn (or cosmic girls)
+182 wonder girls
