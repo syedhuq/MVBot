@@ -1,5 +1,6 @@
 # MVBot
-Discord bot written in Ruby using discordrb, designed for osu!kpop community serve
+Discord bot written in Ruby using discordrb, designed for osu!kpop community server
+
 **Don't forget to include token.txt!**
 
 v1.0.0 rework
