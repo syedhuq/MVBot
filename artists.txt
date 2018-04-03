@@ -153,9 +153,9 @@
 153 sistar
 154 sistar
 155 sistar
-156 snsd (or girls generation)
-157 snsd (or girls generation)
-158 snsd (or girls generation)
+156 snsd
+157 snsd
+158 snsd
 159 starship planet
 160 stray kids
 161 sunmi
@@ -176,7 +176,7 @@
 176 winner
 177 winner
 178 winner
-179 wjsn (or cosmic girls)
-180 wjsn (or cosmic girls)
-181 wjsn (or cosmic girls)
+179 wjsn
+180 wjsn
+181 wjsn
 182 wonder girls
