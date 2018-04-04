@@ -3,6 +3,14 @@ Discord bot written in Ruby using discordrb, designed for osu!kpop community ser
 
 **Don't forget to include token.txt!**
 
+v1.1.2
+- Changed regexp calculations to remove multiple spaces from guess
+- Fixed heart shaker title
+
+v1.1.1
+- Regexp calculations adjusted
+- Typo
+
 v1.1.0
 - Changed regexp calculations to not fuck up on punctuation
 - Removed 'timers' gem as it was obsolete
