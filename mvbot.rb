@@ -112,7 +112,7 @@ end
 
 bot.command :next, required_roles:[guess_gm_role] do |event|
   if in_progress
-    #test_arr = [70,47,131,174,95]
+    #test_arr = [55]
     #randTest = rand(test_arr.size)
     #randVal = test_arr[randTest]-1
     
@@ -140,7 +140,7 @@ bot.message do |event|
       artist_words.shift
       #puts "artist_words: #{artist_words}"
       
-      guess = event.message.text.strip.downcase.gsub(/[[:punct:]]/, '')#.gsub(/[^[\w\s\d]]/, '')
+      guess = event.message.text.strip.downcase.gsub(/[[:punct:]]/, '').gsub(/\s+/, ' ')#.gsub(/[^[\w\s\d]]/, '')
       #puts "guess: #{guess}"
       title_reg = /\b#{Regexp.quote(title_words.join(' '))}\b/
       artist_reg = /\b#{Regexp.quote(artist_words.join(' '))}\b/
