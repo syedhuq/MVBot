@@ -1,11 +1,10 @@
 require 'discordrb'
 require_relative "player"
-require 'timers' 
 
 #Constants
 NUM_IMAGES = 182
 server_id = 277188495728967681
-gm_id = 430164410552549386
+gm_id = 430164410552549386 # role id for guess gm
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 tk = File.open('token.txt', &:readline)
 tk = tk.strip
@@ -18,15 +17,7 @@ puts "This bot's invite URL is #{bot.invite_url}."
 in_progress ||= false
 engaged ||= false
 players = []
-timers = Timers::Group.new
 guess_gm_role = bot.server(server_id).role(gm_id)
-
-=begin
-line = 0
-key = []
-key_file = "key.txt"
-IO.foreach(key_file){|line| key.push(line.strip)}
-=end
 
 artist_current = "", title_current = ""
 artists_file = "artists.txt"
@@ -121,6 +112,10 @@ end
 
 bot.command :next, required_roles:[guess_gm_role] do |event|
   if in_progress
+    #test_arr = [70,47,131,174,95]
+    #randTest = rand(test_arr.size)
+    #randVal = test_arr[randTest]-1
+    
     randVal = rand(NUM_IMAGES)
     f = File.new("pics/"+(randVal+1).to_s+".png", "r")
     engaged = true
@@ -138,66 +133,26 @@ bot.message do |event|
   if in_progress && engaged
     loc = players.find_index{|player| player.match(event.user.id)}
     if loc != nil
-      title_words = title_current.split(/\W+/)
+      title_words = title_current.gsub(/[[:punct:]]/, '').split(/\s+/)
       title_words.shift
-      artist_words = artist_current.split(/\W+/)
+      puts "title_words: #{title_words}"
+      artist_words = artist_current.gsub(/[[:punct:]]/, '').split(/\s+/)
       artist_words.shift
-      #artist = key_words.shift
-      #title = key_words.join(" ").to_s
+      puts "artist_words: #{artist_words}"
       
-      guess = event.message.text.strip.downcase.gsub(/[^\w\s\d]/, '')
+      guess = event.message.text.strip.downcase.gsub(/[[:punct:]]/, '')#.gsub(/[^[\w\s\d]]/, '')
+      puts "guess: #{guess}"
       title_reg = /\b#{Regexp.quote(title_words.join(' '))}\b/
       artist_reg = /\b#{Regexp.quote(artist_words.join(' '))}\b/
       if title_reg.match(guess) and artist_reg.match(guess)
+        engaged = false
         event.respond("**#{event.user.username}** gets a point!")
         players[loc].give_point
-        engaged = false
       end
     end
   end
 end
 
-=begin
-bot.message do |event|
-  if in_progress && engaged
-    loc = players.find_index{|player| player.match(event.user.id)}
-    if loc != nil
-      key_words = line.split(/\W+/)
-      key_words.shift
-      #artist = key_words.shift
-      #title = key_words.join(" ").to_s
-      
-      guess = event.message.text.strip
-      answer_reg = /\b#{Regexp.quote(key_words.join(' '))}\b/
-      #guess_reg = /#{Regexp.quote(guess)}/
-      #event.respond(guess.join(" "))
-      if answer_reg.match(guess.downcase)
-        event.respond("**#{event.user.username}** gets a point!")
-        players[loc].give_point
-        engaged = false
-      end
-    end
-  end
-end
-=end
-
-
-=begin
-looping ||= false
-bot.command :start do |event|
-  looping = true
-  
-  $pic_timer = timers.every(5) {event.respond("test")}
-  loop {timers.wait}
-  $pic_timer.resume
-end
-
-bot.command :stop do |event|
-  looping = false
-  $pic_timer.pause
-end
-=end
-
-bot.run(true)
+bot.run(true) # async
 bot.game = "use ?help"
 bot.sync
