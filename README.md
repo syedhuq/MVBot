@@ -2,6 +2,7 @@
 Discord bot written in Ruby using discordrb, designed for osu!kpop community server
 
 **Don't forget to include token.txt!**
+
 v1.1.0
 - Changed regexp calculations to not fuck up on punctuation
 - Removed 'timers' gem as it was obsolete
