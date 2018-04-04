@@ -135,13 +135,13 @@ bot.message do |event|
     if loc != nil
       title_words = title_current.gsub(/[[:punct:]]/, '').split(/\s+/)
       title_words.shift
-      puts "title_words: #{title_words}"
+      #puts "title_words: #{title_words}"
       artist_words = artist_current.gsub(/[[:punct:]]/, '').split(/\s+/)
       artist_words.shift
-      puts "artist_words: #{artist_words}"
+      #puts "artist_words: #{artist_words}"
       
       guess = event.message.text.strip.downcase.gsub(/[[:punct:]]/, '')#.gsub(/[^[\w\s\d]]/, '')
-      puts "guess: #{guess}"
+      #puts "guess: #{guess}"
       title_reg = /\b#{Regexp.quote(title_words.join(' '))}\b/
       artist_reg = /\b#{Regexp.quote(artist_words.join(' '))}\b/
       if title_reg.match(guess) and artist_reg.match(guess)
